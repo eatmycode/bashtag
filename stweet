@@ -16,7 +16,7 @@
 ######
 # HELP
     #
-    # Quick How-to dialog.
+    # Lil' Quick How-to dialog.
     #####
 
         if [[ "$*" == "-help" ]] || [[ "$*" == "-h" ]]
@@ -71,7 +71,7 @@
     #
     # Simple check for current OS
     # Date builtin on OSX is not the same as on Linux.
-    # We need date fo oath.
+    # We need the date for OAuth.
     ##### [NO NEED TO EDIT THIS]
 
         platform='unknown'
@@ -124,7 +124,7 @@
 
 
 #############
-# TWITTER API
+# TWITTER APP
     #
     # Your application's OAuth settings.
     ##### [EDIT THIS TO YOUR APPLICATION'S VALUES]
@@ -163,7 +163,7 @@
 
             if [[ "$hasher" == "php" ]]; then
                 oauth_signature_hashed_via_php=$(
-                    echo "<?php echo base64_encode(hash_hmac(\"sha1\", \"$oauth_signature_base\", \"$oauth_signature_key\", true)); ?>"|/usr/bin/php
+                    echo "<?php echo base64_encode(hash_hmac(\"sha1\", \"$oauth_signature_base\", \"$oauth_signature_key\", true)); ?>"|php
                 )
                 oauth_signature=$(urlenc $"$oauth_signature_hashed_via_php";echo)
             elif [[ "$hasher" == "openssl" ]]; then
