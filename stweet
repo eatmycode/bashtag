@@ -129,10 +129,10 @@
     # Your application's OAuth settings.
     ##### [EDIT THIS TO YOUR APPLICATION'S VALUES]
 
-        app_key="UqxeMvFRnm5MEjIlamOAg"
-        app_secret="fMKNytunaVThl4ezKgFWAEtIWIahKet7ELfNja6zBos"
-        access_token="2281283382-2U03SaU0PWgVCxEAmDXc1CN11FlGSBwSUFPQVas"
-        access_secret="pnqhQRlbZgikMXX4czAImrDste8VsK2HnJGNcaPy5jrYR"
+        app_key="YOUR_CONSUMER_KEY"
+        app_secret="YOUR_CONSUMER_SECRET"
+        access_token="YOUR_ACCESS_TOKEN"
+        access_secret="YOUR_ACCESS_SECRET"
 
     #
     # API Auth & Communication.

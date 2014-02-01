@@ -23,7 +23,15 @@ PHP >= 5.3.x
 
 OpenSSL 
 
-* Defaults to PHP if both installed.
+---
+
+Why PHP or OpenSSL?
+
+Well, the signature for authorizing and posting the status update is calculated by passing the signature base string and signing key to the HMAC-SHA1 hashing algorithm. The details of the algorithm are explained in depth [HERE](http://en.wikipedia.org/wiki/HMAC), but thankfully there are implementations of HMAC-SHA1 available for every popular language. For example, PHP has the [hash_hmac function](http://php.net/manual/en/function.hash-hmac.php) and HMAC-SHA1 hashing can easily be generated on almost any modern Unix-like system using [OpenSSL](http://www.openssl.org/docs/apps/dgst.html).
+
+---
+
+* Hashing defaults to PHP if both are installed.
 
 * On a production webserver, typically both would already be installed (see your host if you are unsure).
 
@@ -44,12 +52,6 @@ OpenSSL
 		# If you get nothing in return or see somthing like /usr/bin/which: no {SOFTWARE_NAME} in (/usr/local/bin:.....
 		# for both php AND openssl, then you dont have either installed.
   
-  
----
-
-Why PHP or OpenSSL?
-
-Well, the signature for authorizing and posting the status update is calculated by passing the signature base string and signing key to the HMAC-SHA1 hashing algorithm. The details of the algorithm are explained in depth [HERE](http://en.wikipedia.org/wiki/HMAC), but thankfully there are implementations of HMAC-SHA1 available for every popular language. For example, PHP has the [hash_hmac function](http://php.net/manual/en/function.hash-hmac.php) and HMAC-SHA1 hashing can easily be generated on almost any modern Unix-like system using [OpenSSL](http://www.openssl.org/docs/apps/dgst.html).
 
 ## Prep...
 
