@@ -11,7 +11,7 @@ If yes to any of the above, then `stweet`!
 
 So, this is just the beginning! `ShellTweet` suggestions and pull requests are welcome and encouraged.
 
-## Requirements...
+## Requirements
 
 Linux Based OS/Virtual Environment
 
@@ -53,13 +53,13 @@ Well, the signature for authorizing and posting the status update is calculated 
 		# for both php AND openssl, then you dont have either installed.
   
 
-## Prep...
+## Configuration
 
 The goal of `stweet` is simplicity `PAUSE` You do however need to make yourself a twitter app!
 
 So basically, you need to:
 
-1. [Go create yourself a twitter app on the twitter developer site](https://dev.twitter.com/apps/).
+1. First, [Go create yourself a twitter app on the twitter developer site](https://dev.twitter.com/apps/).
 2. After creation, click the `Settings` tab, scroll down and enable read/write access for your twitter app. (This will take a min.)
 3. Now, click the `Details` tab, scroll down and click `Create my access token` (This will also take a min.)
 4. Lastly, click the `OAuth tool` tab and grab your consumer key/secret and access token/secret:
@@ -96,7 +96,7 @@ All that's left is to just place `stweet` in your scripts, bin, or executable di
 
 **Done!**
 
-## Use...
+## How To `stweet`
 
 1. Tweet It. (A tweet oneliner)
 
@@ -141,7 +141,7 @@ If an error occurs, it will be displayed in un-pretty (sorry) JSON: o_o
 
 	   Error: [ {"errors":[{"code":186,"message":"Status is over 140 characters."}]} ]
 
-## Limitations...
+## Limitations
 
 This is a simple CLI tool. Nothing real extravagant here.
 
@@ -151,7 +151,7 @@ However, it's use can be expanded upon as you wish... ([Check the Twitter API do
 
 I'd love to see/merge what other `stweet` things you do with it.
 
-## OS/Env...
+## OS/Env
 
 Tested and confirmed working on:
 
@@ -162,7 +162,7 @@ Tested and confirmed working on:
 
 If working for you (or not) and your OS is not mentioned, please drop me a line with your OS/Environment.
 
-## License...
+## License
 
 [MIT License](http://api.marquelmedia.net/lic/LICENSE.md)
 
