@@ -59,7 +59,7 @@ The goal of `stweet` is simplicity `PAUSE` You do however need to make yourself 
 
 So basically, you need to:
 
-1. First, [Go create yourself a twitter app on the twitter developer site](https://dev.twitter.com/apps/).
+1. First, [go and create yourself a twitter app on the twitter developer site](https://dev.twitter.com/apps/).
 2. After creation, click the `Settings` tab, scroll down and enable read/write access for your twitter app. (This will take a min.)
 3. Now, click the `Details` tab, scroll down and click `Create my access token` (This will also take a min.)
 4. Lastly, click the `OAuth tool` tab and grab your consumer key/secret and access token/secret:
@@ -68,20 +68,21 @@ So basically, you need to:
 
 Ok, got all that?
 
-Now, open up `stweet` in your preferred editor and add your app access tokens (lines 127-130).
+Now, open up `stweet` in your preferred editor and add your app access tokens (lines 132-135).
 
-		   120
-		   121	#############
-		   122	# TWITTER API
-		   123	    #
-		   124	    # Your application's OAuth settings.
-		   125	    ##### [EDIT THIS TO YOUR APPLICATION'S VALUES]
-		   126	
-		   127	        app_key="YOUR_CONSUMER_KEY"
-		   128	        app_secret="YOUR_CONSUMER_SECRET"
-		   129	        access_token="YOUR_ACCESS_TOKEN"
-		   130	        access_secret="YOUR_ACCESS_SECRET"
-		   131
+		   124
+		   125	#############
+		   126	# TWITTER API
+		   127	    #
+		   128	    # Your application's OAuth settings.
+		   129	    ##### [EDIT THIS TO YOUR APPLICATION'S VALUES]
+		   130	
+		   131	
+		   132	        app_key="YOUR_CONSUMER_KEY"
+		   133	        app_secret="YOUR_CONSUMER_SECRET"
+		   134	        access_token="YOUR_ACCESS_TOKEN"
+		   135	        access_secret="YOUR_ACCESS_SECRET"
+		   136	
 
 
 All that's left is to just place `stweet` in your scripts, bin, or executable dir:
@@ -105,7 +106,7 @@ All that's left is to just place `stweet` in your scripts, bin, or executable di
 		#           NOTE: ONLY if using this option (Option 1. - Direct tweet), 
 		#                 all "hastags" must be escaped with a '\'
 
-	    ~$ stweet \#money is on my \#mind.
+	    ~$ stweet \#money on my \#mind.
 
 		#            WHY: Linux will see it as a comment and ignore everything after the first "#"
 
@@ -113,7 +114,7 @@ All that's left is to just place `stweet` in your scripts, bin, or executable di
 2. Prompt It. (Prompts you for your message)
 
 		~$ stweet
-		   What You Tweetin' [140 pls]: yep this is stupid simple #bashery
+		   What Are You Tweetin' [140 pls]: yep this is very simple #bashery
 
 
 3. Pipe It. (Feed stweet the stdout from another command or series of commands)
@@ -130,7 +131,7 @@ Yep. Pretty `stweet` right?
 
 If successful, you will see something like:
 
-	~$ stweet Yayyy. I can do this. \#osohappy
+	~$ stweet Ok. I can do this. \#osohappy
 
 	   Tweeted It!
 
@@ -151,7 +152,7 @@ However, it's use can be expanded upon as you wish... ([Check the Twitter API do
 
 I'd love to see/merge what other `stweet` things you do with it.
 
-## OS/Env
+## OS's
 
 Tested and confirmed working on:
 

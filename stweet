@@ -62,7 +62,7 @@
             status_message=$(echo "$@"|sed 's/\\//g';)
         else
             echo
-            read -p "What You Tweetin' [140 pls]: " status_message
+            read -p "What Are You Tweetin' [140 pls]: " status_message
         fi
 
 
