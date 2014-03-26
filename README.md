@@ -25,7 +25,7 @@ OpenSSL
 
 ---
 
-Why PHP or OpenSSL?
+**Why PHP or OpenSSL?**
 
 Well, the signature for authorizing and posting the status update is calculated by passing the signature base string and signing key to the HMAC-SHA1 hashing algorithm. The details of the algorithm are explained in depth [HERE](http://en.wikipedia.org/wiki/HMAC), but thankfully there are implementations of HMAC-SHA1 available for every popular language. For example, PHP has the [hash_hmac function](http://php.net/manual/en/function.hash-hmac.php) and HMAC-SHA1 hashing can easily be generated on almost any modern Unix-like system using [OpenSSL](http://www.openssl.org/docs/apps/dgst.html).
 
@@ -161,7 +161,7 @@ Tested and confirmed working on:
 * CentOS 5.10
 * More to come...
 
-If working for you (or not) and your OS is not mentioned, please drop me a line with your OS/Environment.
+If working for you (or not), please feel free to drop me a line with your OS/Environment.
 
 ## License
 
