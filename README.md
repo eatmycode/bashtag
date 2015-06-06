@@ -1,4 +1,4 @@
-`stweet` (aka. `ShellTweet`)
+`tweet.sh` (aka. `ShellTweet`)
 ---
 
 A simple shell script to post tweets to your timeline using Twitter's v1.1 API.
@@ -7,9 +7,7 @@ A simple shell script to post tweets to your timeline using Twitter's v1.1 API.
 * Rather not switch to a browser or other device to broadcast to the world?
 * Wanna automate tweets of whatever gibberish via cron?
 
-If yes to any of the above, then `stweet`!
-
-So, this is just the beginning! `ShellTweet` suggestions and pull requests are welcome and encouraged.
+If yes to any of the above... Noice! Keep reading!
 
 ## Requirements
 
@@ -35,27 +33,35 @@ Well, the signature for authorizing and posting the status update is calculated 
 
 * On a production webserver, typically both would already be installed (see your host if you are unsure).
 
-* If using on your local box and you dont have a l/a/n/mp stack or stand-alone PHP install or OpenSSL, then get one.
+* If using on your local box and you dont have a l/a/n/mp stack or stand-alone PHP install or OpenSSL installed (really?), then get one of 'em.
+
+* cURL is also required and should be installed by default anyway.
 
 * A quick check:
 
-		# Open up a linux terminal and type:
+        # Open up a linux terminal and type:
 
-		~$ which php openssl
+        ~$ which php openssl curl
 
-		# If you have 1 or both installed, you should see something similar to:
+        # If you have 1 or all 3 installed, you should see something similar to:
 
-		~$ which php openssl
-		/usr/local/bin/php
-		/usr/bin/openssl
+        ~$ which php openssl curl
+        /usr/local/bin/php
+        /usr/bin/openssl
+        /usr/bin/curl
 
-		# If you get nothing in return or see somthing like /usr/bin/which: no {SOFTWARE_NAME} in (/usr/local/bin:.....
-		# for both php AND openssl, then you dont have either installed.
-  
+        # If you get nothing in return or see somthing like /usr/bin/which: no {SOFTWARE_NAME} in (/usr/local/bin:.....
+        # for any of the three, then that particular program is not installed.
+
+
 
 ## Configuration
 
-The goal of `stweet` is simplicity `PAUSE` You do however need to make yourself a twitter app!
+The goal of `tweet.sh` is simplicity.
+
+`PAUSE`
+
+You do however need to make yourself a twitter app!
 
 So basically, you need to:
 
@@ -64,107 +70,98 @@ So basically, you need to:
 3. Now, click the `Details` tab, scroll down and click `Create my access token` (This will also take a min.)
 4. Lastly, click the `OAuth tool` tab and grab your consumer key/secret and access token/secret:
 
-	![twitter/developers](http://api.marquelmedia.net/ss/OAuth_tool.png)
-
 Ok, got all that?
 
-Now, open up `stweet` in your preferred editor and add your app access tokens (lines 132-135).
+Now, open up `tweet.sh` in your preferred editor and add your app access tokens (lines 47-50).
 
-		   124
-		   125	#############
-		   126	# TWITTER API
-		   127	    #
-		   128	    # Your application's OAuth settings.
-		   129	    ##### [EDIT THIS TO YOUR APPLICATION'S VALUES]
-		   130	
-		   131	
-		   132	        app_key="YOUR_CONSUMER_KEY"
-		   133	        app_secret="YOUR_CONSUMER_SECRET"
-		   134	        access_token="YOUR_ACCESS_TOKEN"
-		   135	        access_secret="YOUR_ACCESS_SECRET"
-		   136	
+    44        # Your Twitter application's settings.
+    45        # [EDIT THIS SECTION TO REFLECT YOUR TWITTER APPLICATION'S VALUES]
+    46    
+    47            app_key="YOUR_CONSUMER_KEY"
+    48            app_secret="YOUR_CONSUMER_SECRET"
+    49            access_token="YOUR_ACCESS_TOKEN"
+    50            access_secret="YOUR_ACCESS_SECRET"    
 
 
-All that's left is to just place `stweet` in your scripts, bin, or executable dir:
+All that's left is to just place `tweet.sh` in your scripts, bin, or executable dir:
 
-    ~$ cd /place/to/where/you/downloaded/stweet
-	~$ mv stweet /path/to/your/executable/scripts/
+    ~$ cd /place/to/where/you/downloaded/tweet.sh/
+    ~$ mv tweet.sh /path/to/your/executable/scripts/
 
-...or create a symlink to `stweet` in your scripts, bin, or executable dir:
+...or create a symlink to `tweet.sh` in your scripts, bin, or executable dir:
 
     ~$ cd /path/to/your/executable/scripts/
-	~$ ln -s /place/to/where/you/downloaded/stweet ./stweet
+    ~$ ln -s /place/to/where/you/downloaded/tweet.sh ./tweet
 
 **Done!**
 
-## How To `stweet`
+## How To `tweet.sh`
 
 1. Tweet It. (A tweet oneliner)
 
-	    ~$ stweet this is pretty dope!
+        ~$ tweet.sh this is pretty dope!
 
-		#           NOTE: ONLY if using this option (Option 1. - Direct tweet), 
-		#                 all "hastags" must be escaped with a '\'
+        #           NOTE: ONLY if using this option (Option 1. - Direct tweet), 
+        #                 all "hastags" must be escaped with a '\'
 
-	    ~$ stweet \#money on my \#mind.
+        ~$ tweet.sh \#money on my \#mind.
 
-		#            WHY: Linux will see it as a comment and ignore everything after the first "#"
-
+        #            WHY: Linux will see it as a comment and ignore everything after the first "#"
+        #                 * You can however drop quotes arround your tweet to avoid escaping the hastag!
 
 2. Prompt It. (Prompts you for your message)
 
-		~$ stweet
-		   What Are You Tweetin' [140 pls]: yep this is very simple #bashery
+        ~$ tweet.sh
+           Whatchu Tweetin' ? [140 pls]: yep this is very simple #bashery
 
 
-3. Pipe It. (Feed stweet the stdout from another command or series of commands)
+3. Pipe It. (Feed tweet.sh the stdout from another command or series of commands)
 
-		~$ cat somefile | stweet
+        ~$ cat somefile | tweet.sh
 
 
 4. Cron It. (Automate your tweets)
 
-		*/5 * * * * PATH=PATH:/path/to/your/executable/scripts/; curl -s http://something.from/somewhere | stweet > /dev/null 2>&1
+        */5 * * * * PATH=PATH:/path/to/your/executable/scripts/; curl -s http://something.from/somewhere | tweet.sh > /dev/null 2>&1
 
 
-Yep. Pretty `stweet` right?
+Yep. Pretty `tweet.sh` right?
 
 If successful, you will see something like:
 
-	~$ stweet Ok. I can do this. \#osohappy
+    ~$ tweet.sh Ok. I can do this. \#osohappy
 
-	   Tweeted It!
+       Tweeted It!
 
 
-If an error occurs, it will be displayed in un-pretty (sorry) JSON: o_o
+If an error occurs, it will be displayed in un-pretty JSON: o_o
 
-	~$ stweet This is some text that is really long and not less than 140 characters. But it is something I really want to get off of my chest because it is important for me to say it!
+    ~$ tweet.sh This is some text that is really long and not less than 140 characters. But it is something I really want to get off of my chest because it is important for me to say it!
 
-	   Error: [ {"errors":[{"code":186,"message":"Status is over 140 characters."}]} ]
+       Error: [ {"errors":[{"code":186,"message":"Status is over 140 characters."}]} ]
 
 ## Limitations
 
 This is a simple CLI tool. Nothing real extravagant here.
 
-It's primarily for text only tweets <= 140 characters and nothing more (at least currently).
+It's only for "text only" tweets <= 140 characters and nothing more (at least currently).
 
 However, it's use can be expanded upon as you wish... ([Check the Twitter API docs](https://dev.twitter.com/docs/api/1.1/)).
 
-I'd love to see/merge what other `stweet` things you do with it.
+I'd love to see/merge what other `tweet.sh` things you do with it.
 
 ## OS's
 
 Tested and confirmed working on:
 
-* Mac OSX 10.9.1
-* CentOS 6.4
-* CentOS 5.10
+* Mac OSX 10.9.1+
+* CentOS 5.10+
 * More to come...
 
 If working for you (or not), please feel free to drop me a line with your OS/Environment.
 
 ## License
 
-[MIT License](http://api.marquelmedia.net/lic/LICENSE.md)
+[MIT License](http://eatmycode.io/lic/tweet.sh.license)
 
 
