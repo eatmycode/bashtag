@@ -11,7 +11,7 @@ If yes to any of the above... Noice! Keep reading!
 
 ## Requirements
 
-Linux Based OS/Virtual Environment
+Your Terminal
 
 `AND`
 
