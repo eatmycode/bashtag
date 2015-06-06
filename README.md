@@ -1,4 +1,4 @@
-`tweet.sh` (aka. `ShellTweet`)
+`bashtag`
 ---
 
 A simple shell script to post tweets to your timeline using Twitter's v1.1 API.
@@ -57,7 +57,7 @@ Well, the signature for authorizing and posting the status update is calculated 
 
 ## Configuration
 
-The goal of `tweet.sh` is simplicity.
+The goal of `bashtag` is simplicity.
 
 `PAUSE`
 
@@ -72,7 +72,7 @@ So basically, you need to:
 
 Ok, got all that?
 
-Now, open up `tweet.sh` in your preferred editor and add your app access tokens (lines 47-50).
+Now, open up `bashtag` in your preferred editor and add your app access tokens (lines 47-50).
 
     44        # Your Twitter application's settings.
     45        # [EDIT THIS SECTION TO REFLECT YOUR TWITTER APPLICATION'S VALUES]
@@ -83,62 +83,64 @@ Now, open up `tweet.sh` in your preferred editor and add your app access tokens 
     50            access_secret="YOUR_ACCESS_SECRET"    
 
 
-All that's left is to just place `tweet.sh` in your scripts, bin, or executable dir:
+All that's left to do is to make it executable:
 
-    ~$ cd /place/to/where/you/downloaded/tweet.sh/
-    ~$ mv tweet.sh /path/to/your/executable/scripts/
+    ~$ cd /place/to/where/you/downloaded/bashtag/
+    ~$ chmod +x bashtag
 
-...or create a symlink to `tweet.sh` in your scripts, bin, or executable dir:
+and place `bashtag` in your scripts, bin, or executable dir:
+
+    ~$ mv bashtag /path/to/your/executable/scripts/
+
+...or create a symlink to `bashtag` in your scripts, bin, or executable dir:
 
     ~$ cd /path/to/your/executable/scripts/
-    ~$ ln -s /place/to/where/you/downloaded/tweet.sh ./tweet
+    ~$ ln -s /place/to/where/you/downloaded/bashtag ./bashtag
 
 **Done!**
 
-## How To `tweet.sh`
+## How To `bashtag`
 
 1. Tweet It. (A tweet oneliner)
 
-        ~$ tweet this is pretty dope!
+        ~$ bashtag this is pretty dope!
 
-        #      NOTE: ONLY if using this option (Option 1. - Direct tweet), 
-        #            all "hastags" must be escaped with a '\'
+        #           NOTE: ONLY if using this option (Option 1. - Direct tweet), 
+        #                 all "hastags" must be escaped with a '\'
 
-        ~$ tweet \#money on my \#mind.
+        ~$ bashtag \#money on my \#mind.
 
-        #       WHY: Linux will see it as a comment and ignore everything after the first "#"
-        #            You can however drop quotes arround your tweet to avoid escaping:
-
-        ~$ tweet "i dont feel like escaping #ijusdontwanna #toolazy #boss"
+        #            WHY: Linux will see it as a comment and ignore everything after the first "#"
+        #                 * You can however drop quotes arround your tweet to avoid escaping the hastag!
 
 2. Prompt It. (Prompts you for your message)
 
-        ~$ tweet
+        ~$ bashtag
            Whatchu Tweetin' ? [140 pls]: yep this is very simple #bashery
 
 
-3. Pipe It. (Feed tweet.sh the stdout from another command or series of commands)
+3. Pipe It. (Feed bashtag the stdout from another command or series of commands)
 
-        ~$ cat somefile | tweet
+        ~$ cat somefile | bashtag
 
 
 4. Cron It. (Automate your tweets)
 
-        */5 * * * * curl -s http://something.from/somewhere | /path/to/tweet.sh > /dev/null 2>&1
+        */5 * * * * PATH=PATH:/path/to/your/executable/scripts/; curl -s http://something.from/somewhere | bashtag > /dev/null 2>&1
 
 
-Yep. Pretty sweet right?
+Yep. Pretty `bashtag` right?
 
 If successful, you will see something like:
 
-    ~$ tweet Ok. I can do this. \#osohappy
+    ~$ bashtag Ok. I can do this. \#osohappy
 
        Tweeted It!
 
 
-If an error occurs, it will be displayed in some un-pretty JSON: o_o
+If an error occurs, it will be displayed in un-pretty JSON: o_o
 
-    ~$ tweet This is some text that is really long and not less than 140 characters. But it is something I really want to get off of my chest because it is important for me to say it!
+    ~$ bashtag This is some text that is really long and not less than 140 characters. But it is something I really want to get off of my chest because it is important for me to say it!
 
        Error: [ {"errors":[{"code":186,"message":"Status is over 140 characters."}]} ]
 
@@ -150,7 +152,7 @@ It's only for "text only" tweets <= 140 characters and nothing more (at least cu
 
 However, it's use can be expanded upon as you wish... ([Check the Twitter API docs](https://dev.twitter.com/docs/api/1.1/)).
 
-I'd love to see/merge what other `tweet.sh` things you do with it.
+I'd love to see/merge what other `bashtag` things you do with it.
 
 ## OS's
 
@@ -164,6 +166,6 @@ If working for you (or not), please feel free to drop me a line with your OS/Env
 
 ## License
 
-[MIT License](http://eatmycode.io/lic/tweet.sh.license)
+[MIT License](http://eatmycode.io/lic/bashtag.license)
 
 
