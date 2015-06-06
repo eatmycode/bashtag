@@ -105,13 +105,15 @@ and place `bashtag` in your scripts, bin, or executable dir:
 
         ~$ bashtag this is pretty dope!
 
-        #           NOTE: ONLY if using this option (Option 1. - Direct tweet), 
-        #                 all "hastags" must be escaped with a '\'
+        #      NOTE: ONLY if using this option (Option 1. - Direct tweet), 
+        #            all "hastags" must be escaped with a '\'
 
         ~$ bashtag \#money on my \#mind.
 
-        #            WHY: Linux will see it as a comment and ignore everything after the first "#"
-        #                 * You can however drop quotes arround your tweet to avoid escaping the hastag!
+        #       WHY: Linux will see it as a comment and ignore everything after the first "#"
+        #            * You can however drop quotes arround your tweet to avoid escaping:
+
+        ~$ bashtag "i will not escape tweets #boss #idontwanna #2lzy"
 
 2. Prompt It. (Prompts you for your message)
 
@@ -126,10 +128,10 @@ and place `bashtag` in your scripts, bin, or executable dir:
 
 4. Cron It. (Automate your tweets)
 
-        */5 * * * * PATH=PATH:/path/to/your/executable/scripts/; curl -s http://something.from/somewhere | bashtag > /dev/null 2>&1
+        */5 * * * * curl -s http://something.from/somewhere | bashtag > /dev/null 2>&1
 
 
-Yep. Pretty `bashtag` right?
+Yep. Pretty awesome right?
 
 If successful, you will see something like:
 
