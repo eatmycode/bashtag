@@ -99,44 +99,46 @@ All that's left is to just place `tweet.sh` in your scripts, bin, or executable 
 
 1. Tweet It. (A tweet oneliner)
 
-        ~$ tweet.sh this is pretty dope!
+        ~$ tweet this is pretty dope!
 
-        #           NOTE: ONLY if using this option (Option 1. - Direct tweet), 
-        #                 all "hastags" must be escaped with a '\'
+        #      NOTE: ONLY if using this option (Option 1. - Direct tweet), 
+        #            all "hastags" must be escaped with a '\'
 
-        ~$ tweet.sh \#money on my \#mind.
+        ~$ tweet \#money on my \#mind.
 
-        #            WHY: Linux will see it as a comment and ignore everything after the first "#"
-        #                 * You can however drop quotes arround your tweet to avoid escaping the hastag!
+        #       WHY: Linux will see it as a comment and ignore everything after the first "#"
+        #            You can however drop quotes arround your tweet to avoid escaping:
+
+        ~$ tweet "i dont feel like escaping #ijusdontwanna #toolazy #boss"
 
 2. Prompt It. (Prompts you for your message)
 
-        ~$ tweet.sh
+        ~$ tweet
            Whatchu Tweetin' ? [140 pls]: yep this is very simple #bashery
 
 
 3. Pipe It. (Feed tweet.sh the stdout from another command or series of commands)
 
-        ~$ cat somefile | tweet.sh
+        ~$ cat somefile | tweet
 
 
 4. Cron It. (Automate your tweets)
 
-        */5 * * * * PATH=PATH:/path/to/your/executable/scripts/; curl -s http://something.from/somewhere | tweet.sh > /dev/null 2>&1
+        */5 * * * * curl -s http://something.from/somewhere | /path/to/tweet.sh > /dev/null 2>&1
 
 
-Yep. Pretty `tweet.sh` right?
+Yep. Pretty sweet right?
 
 If successful, you will see something like:
 
-    ~$ tweet.sh Ok. I can do this. \#osohappy
+    ~$ tweet Ok. I can do this. \#osohappy
 
        Tweeted It!
 
 
-If an error occurs, it will be displayed in un-pretty JSON: o_o
+If an error occurs, it will be displayed in some un-pretty JSON: o_o
 
-    ~$ tweet.sh This is some text that is really long and not less than 140 characters. But it is something I really want to get off of my chest because it is important for me to say it!
+    ~$ tweet This is some text that is really long and not less than 140 characters. But it is something I really want to get off of my chest because it is important for me to say it!
 
        Error: [ {"errors":[{"code":186,"message":"Status is over 140 characters."}]} ]
 
