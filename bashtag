@@ -17,10 +17,10 @@
     #
     # A Lil' Quick How-to.
 
-        if [[ "$1" == "-help" ]] || [[ "$1" == "-h" ]] || [[ -z "$*" ]]
+        if [[ "$1" == "-help" ]] || [[ "$1" == "-h" ]] || [[ "$1" == "?" ]]
         then
             echo
-            echo "    :script:   bashtag (ShellTweet)"
+            echo "    :script:   bashtag"
             echo "    :author:   Terrence Harvey <dev@eatmycode.io>"
             echo "      :desc:   Simple shell script to post your tweets via cli."
             echo "     :usage:"
@@ -52,7 +52,7 @@
 
     # Cache file of previously sent tweets:
 
-        cache="/tmp/previous.shelltweets"
+        cache="/tmp/previous.bashtags"
 
 
 ##############
@@ -88,12 +88,12 @@
             echo "Unfortunately cURL is not installed."
             echo "Please install cURL. See https://github.com/eatmycode/bashtag for more information."
             echo
-            exit 0
+            exit 1
         else
             echo "Neither of the preferred encryption tools (OpenSSL & PHP) are installed."
             echo "Please install OpenSSL or PHP. See https://github.com/eatmycode/bashtag for more information."
             echo
-            exit 0
+            exit 1
         fi
 
 
@@ -127,7 +127,7 @@
     # API Auth & Communication:
     # [NO NEED TO EDIT THIS SECTION]
 
-        Authorize(){
+        BASHTAG(){
             oauth_method="POST"
             oauth_version="1.0"
             oauth_url="https://api.twitter.com/1.1/statuses/update.json"
@@ -143,7 +143,7 @@
                 $(urlenc $"oauth_timestamp";echo)=$(urlenc $"$oauth_timestamp";echo)& \
                 $(urlenc $"oauth_token";echo)=$(urlenc $"$oauth_token";echo)& \
                 $(urlenc $"oauth_version";echo)=$(urlenc $"$oauth_version";echo)& \
-                $(urlenc $"status";echo)=$(urlenc $"$status_message";echo)"|sed 's/ //g'
+                $(urlenc $"status";echo)=$(urlenc $"$TWEET";echo)"|sed 's/ //g'
             )
             oauth_signature_base=$(echo "$oauth_method&$(urlenc $"$oauth_url";echo)&$(urlenc $"$oauth_params";echo)")
             oauth_signature_key=$(echo "$(urlenc $"$app_secret";echo)&$(urlenc $"$access_secret";echo)")
@@ -179,31 +179,34 @@
 
         if [[ -n "$(echo "$@"|grep -Eio [A-Za-z0-9])" ]]
         then
-            status_message=$(echo "$@"|sed 's/\\//g';)
+            TWEET=$(echo "$@"|sed 's/\\//g';)
         else
             echo
-            read -p "Whatchu Tweetin' ? [140 pls]: " status_message
+            read -p "Whatchu Tweetin' ? [140 pls]: " TWEET
         fi
 
     # Send data:
 
-        Authorize && Post=$(curl \
+        BASHTAG && Post=$(curl \
             --request "POST" "$oauth_url" \
-            --data "status=$(urlenc $"$status_message";echo)" \
+            --data "status=$(urlenc $"$TWEET";echo)" \
             --header "$oauth_header" \
             -s
         )
 
-    # Print the result:
+    # Print & save the result:
 
         echo
-        if [ -z $(echo "$result"|grep -o "errors") ]
+        if [ -z $(echo "$Post"|grep -o "errors") ]
         then
             echo "Tweeted It!"
+            echo -e "\n$(date): $TWEET"
+            echo -e "\n$(date): $TWEET\n$Post" >> $cache
             exit 0
         else
-            echo "Error: [ $result ]"
-            echo 1
+            echo "Error: [ $Post ]"
+            echo -e "\n$(date): $TWEET\n$Post" >> $cache
+            exit 1
         fi
         echo
 

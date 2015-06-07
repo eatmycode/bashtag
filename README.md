@@ -74,13 +74,13 @@ Ok, got all that?
 
 Now, open up `bashtag` in your preferred editor and add your app access tokens (lines 47-50).
 
-    44        # Your Twitter application's settings.
-    45        # [EDIT THIS SECTION TO REFLECT YOUR TWITTER APPLICATION'S VALUES]
-    46    
-    47            app_key="YOUR_CONSUMER_KEY"
-    48            app_secret="YOUR_CONSUMER_SECRET"
-    49            access_token="YOUR_ACCESS_TOKEN"
-    50            access_secret="YOUR_ACCESS_SECRET"    
+    45        # Your Twitter application's settings.
+    46        # [EDIT THIS SECTION TO REFLECT YOUR TWITTER APPLICATION'S VALUES]
+    47    
+    48            app_key="YOUR_CONSUMER_KEY"
+    49            app_secret="YOUR_CONSUMER_SECRET"
+    50            access_token="YOUR_ACCESS_TOKEN"
+    51            access_secret="YOUR_ACCESS_SECRET"    
 
 
 All that's left to do is to make it executable:
